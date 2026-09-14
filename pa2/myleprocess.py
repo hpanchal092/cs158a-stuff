@@ -1,4 +1,5 @@
 import sys
+import time
 import uuid
 import json
 import socket
@@ -60,6 +61,7 @@ class Server:
                 buffer += chunk.decode("utf-8")
 
                 while True:
+                    buffer = buffer.lstrip()
                     if not buffer:
                         break
                     try:
@@ -95,8 +97,11 @@ class Client:
 
     def send(self, msg: Message) -> None:
         json_string = json.dumps(msg, cls=MessageEncoder)
-        self.client_socket.sendall(json_string.encode("utf-8"))
-        logging.info(f"Sent: {msg}")
+        try:
+            self.client_socket.sendall(json_string.encode("utf-8"))
+            logging.info(f"Sent: {msg}")
+        except Exception as e:
+            logging.warning(f"Could not send {msg}: {e}")
 
 
 if __name__ == "__main__":
@@ -126,7 +131,8 @@ if __name__ == "__main__":
     client = Client(other_ip, other_port)
 
     server.establish_connection()  # non blocking
-    input("\nPress enter when everyone is ready...")  # wait for everyone before
+    time.sleep(0.5)
+    input("\nPress enter when everyone is ready...\n")  # wait for everyone before
     client.connect()
 
     my_uuid = uuid.uuid4()
