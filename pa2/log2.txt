@@ -1,0 +1,12 @@
+Reading config file...
+Establishing server connection with message sender...
+Server connection with ('127.0.0.1', 37976) successfully established.
+Establishing client connection with message recepient...
+Client connection successfully established.
+Starting process, my uuid=f94b4040-bd94-4075-bef9-ed0c0443336e
+Sent: uuid=f94b4040-bd94-4075-bef9-ed0c0443336e, flag=0
+Received: uuid=1e352378-8849-4320-8ee5-2a409b5a6f66, flag=0, less, 0
+Received: uuid=471547f1-af3a-45d5-95fa-c6314e5af9f7, flag=0, less, 0
+Received: uuid=f94b4040-bd94-4075-bef9-ed0c0443336e, flag=1, equal, 1
+Sent: uuid=f94b4040-bd94-4075-bef9-ed0c0443336e, flag=1
+Leader is decided to f94b4040-bd94-4075-bef9-ed0c0443336e
